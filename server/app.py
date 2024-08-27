@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
-from flask import request, session
+from flask import request, session, render_template
 from models import db, User, Note
 from config import app
 
 
 URL_PREFIX = '/api'
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("index.html")
 
 # USER SIGNUP #
 
